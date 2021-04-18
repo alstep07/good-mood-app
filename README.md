@@ -2,8 +2,8 @@
 
 ## Used API's
 
-- Jokes API [https://www.boredapi.com/](https://www.boredapi.com/)
-- Bored API [https://github.com/15Dkatz/official_joke_api](https://github.com/15Dkatz/official_joke_api)
+- [Jokes API](https://www.boredapi.com/)
+- [Bored API](https://github.com/15Dkatz/official_joke_api)
 
 ## Features
 
