@@ -1,4 +1,4 @@
-const jokes = [
+const jokesStore = [
   {
     id: 1,
     type: 'general',
@@ -2275,7 +2275,11 @@ const jokes = [
   },
 ];
 
-export const getRandomJoke = () => {
+export const getRandomJoke = type => {
+  let jokes = [...jokesStore];
+  if (type) {
+    jokes = jokes.filter(joke => joke.type === type);
+  }
   const randomId = Math.floor(Math.random() * jokes.length);
   return jokes[randomId];
 };

@@ -5,19 +5,26 @@ if (module.hot) {
   module.hot.accept();
 }
 
-document.getElementById('app-root').innerHTML = App();
-
-window.renderApp = renderApp;
-
 window.dataStore = {
   setupShown: false,
+  currentJoke: '',
+  jokeText: '',
+  category: '',
+  jokesShown: 0,
 };
+
+window.renderApp = renderApp;
+window.showPunchLine = showPunchLine;
+window.showRandomJoke = showRandomJoke;
+
+document.getElementById('app-root').innerHTML = App();
 
 function App() {
   return `
     <h1>Good Mood App</h1>
+    <p>${dataStore.jokeText || 'Click button to get a joke!'}</p>
     ${Button(dataStore.setupShown)}
-    <p>${window.dataStore.jokeText}</p>
+    ${dataStore.jokesShown}
   `;
 }
 
@@ -28,21 +35,18 @@ function Button(setup) {
 }
 
 function showRandomJoke() {
-  window.dataStore.currentJoke = getRandomJoke();
-  window.dataStore.jokeText = window.dataStore.currentJoke.setup;
-  window.dataStore.setupShown = !window.dataStore.setupShown;
+  dataStore.currentJoke = getRandomJoke('programming');
+  dataStore.jokeText = dataStore.currentJoke.setup;
+  dataStore.setupShown = true;
+  dataStore.jokesShown++;
   renderApp();
 }
-
-window.showRandomJoke = showRandomJoke;
 
 function showPunchLine() {
-  window.dataStore.jokeText = window.dataStore.currentJoke.punchline;
-  window.dataStore.setupShown = !window.dataStore.setupShown;
+  dataStore.jokeText = dataStore.currentJoke.punchline;
+  dataStore.setupShown = false;
   renderApp();
 }
-
-window.showPunchLine = showPunchLine;
 
 function renderApp() {
   document.getElementById('app-root').innerHTML = `
