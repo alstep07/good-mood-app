@@ -1,5 +1,6 @@
 /* eslint-disable no-console */
 import { getRandomJoke } from './fixtures';
+import style from './style.css';
 
 if (module.hot) {
   module.hot.accept();
@@ -21,24 +22,29 @@ window.changeJokesType = changeJokesType;
 
 document.getElementById('app-root').innerHTML = App(dataStore);
 
-function App({ setupShown, jokesShown, jokeText }) {
+function App({ setupShown, jokesShown, jokeText, jokesType }) {
   return `
-    <h1>Good Mood App</h1>
-    ${TypeSwitch()}
-    ${Joke(jokeText)}
-    ${Button(setupShown)}
-    ${Counter(jokesShown)}
+    <div class="${style.app}">
+      <h1 class=${style.app_title}>Good Mood App</h1>
+      ${TypeSwitch()}
+      ${Joke(jokeText, jokesType)}
+      ${Button(setupShown)}
+      ${Counter(jokesShown)}
+    </div>
   `;
 }
 
-function Joke(jokeText) {
-  return `<p>${jokeText || 'Click the button to get a joke!'}</p>`;
+function Joke(jokeText, jokeType) {
+  return `
+    <div class="${style.app_joke} ${jokeType === 'programming' && style.programming}">
+      <p >${jokeText || 'Click the button to get a joke!'}</p>
+    </div>`;
 }
 
 function Button(setup) {
   return setup
-    ? `<button onclick=showPunchLine()>Punchline</button>`
-    : `<button onclick=showRandomJoke()>Get a joke</button>`;
+    ? `<button class="${style.app_button}" onclick=showPunchLine()>Punchline</button>`
+    : `<button class="${style.app_button}" onclick=showRandomJoke()>Get a joke</button>`;
 }
 
 function Counter(jokesShown) {
