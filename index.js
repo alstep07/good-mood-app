@@ -36,8 +36,11 @@ function App({ setupShown, jokesShown, jokeText, jokesType }) {
 
 function Joke(jokeText, jokeType) {
   return `
-    <div class="${style.app_joke} ${jokeType === 'programming' && style.programming}">
-      <p >${jokeText || 'Click the button to get a joke!'}</p>
+    <div class="${style.joke} ${jokeType === 'programming' && style.programming}">
+      <p class="${style.joke_text}">${jokeText || 'Click the button to get a joke!'}<span class="${
+    style.joke_underscore
+  }">&nbsp;</span>
+      </p>
     </div>`;
 }
 
