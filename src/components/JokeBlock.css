@@ -1,0 +1,17 @@
+.jokeContainer {
+  max-width: 100%;
+  min-height: 8rem;
+  margin-top: 3rem;
+  padding: 0 1.25rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid #e5e5e5;
+}
+
+.programming {
+  background-color: #333;
+  border-color: #00cc00;
+  color: #00cc00;
+  font-weight: 600;
+}
