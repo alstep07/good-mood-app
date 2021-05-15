@@ -1,0 +1,40 @@
+parcelRequire=function(e,r,t,n){var i,o="function"==typeof parcelRequire&&parcelRequire,u="function"==typeof require&&require;function f(t,n){if(!r[t]){if(!e[t]){var i="function"==typeof parcelRequire&&parcelRequire;if(!n&&i)return i(t,!0);if(o)return o(t,!0);if(u&&"string"==typeof t)return u(t);var c=new Error("Cannot find module '"+t+"'");throw c.code="MODULE_NOT_FOUND",c}p.resolve=function(r){return e[t][1][r]||r},p.cache={};var l=r[t]=new f.Module(t);e[t][0].call(l.exports,p,l,l.exports,this)}return r[t].exports;function p(e){return f(p.resolve(e))}}f.isParcelRequire=!0,f.Module=function(e){this.id=e,this.bundle=f,this.exports={}},f.modules=e,f.cache=r,f.parent=o,f.register=function(r,t){e[r]=[function(e,r){r.exports=t},{}]};for(var c=0;c<t.length;c++)try{f(t[c])}catch(e){i||(i=e)}if(t.length){var l=f(t[t.length-1]);"object"==typeof exports&&"undefined"!=typeof module?module.exports=l:"function"==typeof define&&define.amd?define(function(){return l}):n&&(this[n]=l)}if(parcelRequire=f,i)throw i;return f}({"hy1s":[function(require,module,exports) {
+"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.default=void 0;const e={setupShown:!1,currentJoke:"",jokeText:"",jokesShown:0,jokesType:"general",shownIds:[],error:null,isDataLoading:!1};var o=e;exports.default=o;
+},{}],"2iMt":[function(require,module,exports) {
+module.exports={app:"_app_99fee",appTitle:"_appTitle_99fee"};
+},{}],"uAIe":[function(require,module,exports) {
+"use strict";async function e(){let e;for(dataStore.isDataLoading=!0;!e||dataStore.shownIds.includes(e.id);)renderApp(),[e]=await getRandomJoke(dataStore.jokesType);dataStore.shownIds=[...dataStore.shownIds,e.id],dataStore.currentJoke=e,dataStore.jokeText=dataStore.currentJoke.setup,dataStore.setupShown=!0,dataStore.isDataLoading=!1,dataStore.jokesShown++,renderApp()}function t(e){let t=e||"Click the button to get a joke!";return dataStore.error&&(t=dataStore.error),o()&&(t=e),t}function o(){return dataStore.jokeText&&dataStore.currentJoke.punchline!==dataStore.jokeText}function a(e){dataStore.jokesType=e}function r(){dataStore.jokeText=dataStore.currentJoke.punchline,dataStore.setupShown=!1,renderApp()}Object.defineProperty(exports,"__esModule",{value:!0}),exports.setNewRandomJoke=e,exports.setJokeContent=t,exports.isNewJokeLoaded=o,exports.changeJokesType=a,exports.setJokePunchLine=r;
+},{}],"WR0P":[function(require,module,exports) {
+module.exports={jokeText:"_jokeText_a9ca3"};
+},{}],"s0+Y":[function(require,module,exports) {
+"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.default=r;var e=t(require("./JokeText.css"));function t(e){return e&&e.__esModule?e:{default:e}}function r(t){return`\n    <p class="${e.default.jokeText}">${t}</p>\n  `}
+},{"./JokeText.css":"WR0P"}],"h6X8":[function(require,module,exports) {
+module.exports={jokeContainer:"_jokeContainer_79e83",programming:"_programming_79e83"};
+},{}],"Imoz":[function(require,module,exports) {
+module.exports="load_general.0a0dcb20.gif";
+},{}],"lEYH":[function(require,module,exports) {
+module.exports="load_prog.bf42e7f9.gif";
+},{}],"fjhl":[function(require,module,exports) {
+module.exports={loadIcon:"_loadIcon_5466e"};
+},{}],"DvVb":[function(require,module,exports) {
+"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.default=s;var e=o(require("../assets/icons/load_general.gif")),r=o(require("../assets/icons/load_prog.gif")),a=o(require("./LoadIcon.css"));function o(e){return e&&e.__esModule?e:{default:e}}function s(){return`\n    <img\n      class="${a.default.loadIcon}"\n      src="${"programming"===dataStore.jokesType?r.default:e.default}"\n      alt="loading">\n  `}
+},{"../assets/icons/load_general.gif":"Imoz","../assets/icons/load_prog.gif":"lEYH","./LoadIcon.css":"fjhl"}],"5abk":[function(require,module,exports) {
+"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.default=o;var e=a(require("./JokeText")),r=a(require("./JokeBlock.css")),t=a(require("./LoadIcon"));function a(e){return e&&e.__esModule?e:{default:e}}function o(a,o){return`\n    <div class="${r.default.jokeContainer} ${"programming"===o&&r.default.programming}">\n      ${dataStore.isDataLoading?(0,t.default)():(0,e.default)(a)}\n    </div>`}
+},{"./JokeText":"s0+Y","./JokeBlock.css":"h6X8","./LoadIcon":"DvVb"}],"PNXB":[function(require,module,exports) {
+module.exports={button:"_button_3183a"};
+},{}],"P5Wb":[function(require,module,exports) {
+"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.default=u;var t=e(require("./Button.css"));function e(t){return t&&t.__esModule?t:{default:t}}function u(e){return e?`<button class="${t.default.button}" onclick="(${setJokePunchLine})()">Punchline</button>`:`<button class="${t.default.button}" onclick="(${setNewRandomJoke})()">Get a joke</button>`}
+},{"./Button.css":"PNXB"}],"t1Lh":[function(require,module,exports) {
+"use strict";function e(){return`\n    <p>Choose jokes category:</p>\n    ${["general","programming"].map(e=>`<label>\n            <input\n            id='${e}'\n            type='radio'\n            name='jokes-type'\n            onchange='(${changeJokesType})(this.id);'\n            ${dataStore.jokesType===e?"checked":""}>\n            ${e}\n          </label>\n        `).join("")}\n  `}Object.defineProperty(exports,"__esModule",{value:!0}),exports.default=e;
+},{}],"F3k3":[function(require,module,exports) {
+"use strict";function e(e){return`<p>Already read jokes: ${e}</p>`}Object.defineProperty(exports,"__esModule",{value:!0}),exports.default=e;
+},{}],"le+d":[function(require,module,exports) {
+"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.default=void 0;var e=n(require("../style.css")),t=n(require("../data/dataStore")),u=require("../data/jokesData"),a=n(require("./JokeBlock")),r=n(require("./Button")),o=n(require("./TypeSwitch")),d=n(require("./Counter"));function n(e){return e&&e.__esModule?e:{default:e}}function l(){const n=(0,u.setJokeContent)(t.default.jokeText);return`\n    <div class="${e.default.app}">\n      <h1 class=${e.default.appTitle}>Good Mood App</h1>\n      ${(0,o.default)()}\n      ${(0,a.default)(n,t.default.jokesType)}\n      ${(0,r.default)(t.default.setupShown)}\n      ${(0,d.default)(t.default.jokesShown)}\n    </div>\n  `}var s=l;exports.default=s;
+},{"../style.css":"2iMt","../data/dataStore":"hy1s","../data/jokesData":"uAIe","./JokeBlock":"5abk","./Button":"P5Wb","./TypeSwitch":"t1Lh","./Counter":"F3k3"}],"iWoG":[function(require,module,exports) {
+"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.default=void 0;var e=t(require("../components/App"));function t(e){return e&&e.__esModule?e:{default:e}}function n(){document.getElementById("app-root").innerHTML=`\n    ${(0,e.default)()}\n  `}var o=n;exports.default=o;
+},{"../components/App":"le+d"}],"6VP1":[function(require,module,exports) {
+"use strict";function t(t){return`https://official-joke-api.appspot.com/jokes/${t}/random`}async function e(e){const o=t(e);try{const t=await fetch(o);return await t.json()}catch(r){dataStore.error=r}}Object.defineProperty(exports,"__esModule",{value:!0}),exports.getRandomJoke=e,exports.default=void 0;var o=e;exports.default=o;
+},{}],"Focm":[function(require,module,exports) {
+"use strict";var e=n(require("./data/dataStore")),o=n(require("./components/App")),t=n(require("./framework/render")),a=require("./data/jokesData"),d=n(require("./data/jokeAPI"));function n(e){return e&&e.__esModule?e:{default:e}}module.hot&&module.hot.accept(),window.dataStore=e.default,window.renderApp=t.default,window.setJokePunchLine=a.setJokePunchLine,window.setNewRandomJoke=a.setNewRandomJoke,window.changeJokesType=a.changeJokesType,window.getRandomJoke=d.default,document.getElementById("app-root").innerHTML=(0,o.default)(e.default);
+},{"./data/dataStore":"hy1s","./components/App":"le+d","./framework/render":"iWoG","./data/jokesData":"uAIe","./data/jokeAPI":"6VP1"}]},{},["Focm"], null)
+//# sourceMappingURL=src.0a6c88c9.js.map
