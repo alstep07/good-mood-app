@@ -10,8 +10,7 @@
 - Get a random joke by category (regular or for programmers)
 - Get the beginning of the joke, then click "Continue" for a punchline
 - The application remembers the number of jokes read
-- After 5 jokes, the application prompts the user to show 10 jokes at once.
-- If the user clicks 'ok', a set of 10 jokes is displayed
+- Jokes container style changes depending on the category
 - Jokes should not repeat
-- Otherwise, the app suggests finding random weekend activities.
-- User can select the number of people for an activity
+
+[Demo](https://alstep07.github.io/good-mood-app/)
