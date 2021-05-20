@@ -1,22 +1,24 @@
-export default function TypeSwitch() {
-  const typeInputComponents = ['general', 'programming']
-    .map(
-      type =>
-        `<label>
-            <input
-            id='${type}'
-            type='radio'
-            name='jokes-type'
-            onchange='(${changeJokesType})(this.id);'
-            ${dataStore.jokesType === type ? 'checked' : ''}>
-            ${type}
-          </label>
-        `,
-    )
-    .join('');
+/** @jsx createElement */
+/** @jsxFrag createFragment */
+import { createElement, createFragment } from '../framework/element';
+import { changeJokesType } from '../data/jokesData';
 
-  return `
-    <p>Choose jokes category:</p>
-    ${typeInputComponents}
-  `;
+export default function TypeSwitch({ jokesType }) {
+  return (
+    <>
+      <p>Choose jokes category:</p>
+      {['general', 'programming'].map(type => (
+        <label>
+          <input
+            id={type}
+            type="radio"
+            name="jokes-type"
+            onchange={e => changeJokesType(e.currentTarget.id)}
+            checked={jokesType === type}
+          />
+          {type}
+        </label>
+      ))}
+    </>
+  );
 }

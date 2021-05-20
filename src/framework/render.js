@@ -1,9 +1,12 @@
-import App from '../components/App';
+/** @jsx createElement */
+/** @jsxFrag createFragment */
+import { createElement } from './element';
+let Component, Target;
 
-function renderApp() {
-  document.getElementById('app-root').innerHTML = `
-    ${App()}
-  `;
+export default function renderApp(componentFunction = null, targetElementId = null) {
+  if (componentFunction) Component = componentFunction;
+  if (targetElementId) Target = targetElementId;
+
+  Target.innerHTML = '';
+  Target.appendChild(<Component />);
 }
-
-export default renderApp;

@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 import dataStore from './data/dataStore';
 import App from './components/App';
 import renderApp from './framework/render';
@@ -16,4 +15,4 @@ window.setNewRandomJoke = setNewRandomJoke;
 window.changeJokesType = changeJokesType;
 window.getRandomJoke = getRandomJoke;
 
-document.getElementById('app-root').innerHTML = App(dataStore);
+renderApp(App, document.getElementById('app-root'));

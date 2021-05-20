@@ -1,3 +1,6 @@
+/** @jsx createElement */
+/** @jsxFrag createFragment */
+import { createElement, createFragment } from '../framework/element';
 import style from '../style.css';
 import dataStore from '../data/dataStore';
 import { setJokeContent } from '../data/jokesData';
@@ -7,17 +10,17 @@ import TypeSwitch from './TypeSwitch';
 import Counter from './Counter';
 
 function App() {
-  const jokeContent = setJokeContent(dataStore.jokeText);
+  const jokeText = setJokeContent(dataStore.jokeText);
 
-  return `
-    <div class="${style.app}">
-      <h1 class=${style.appTitle}>Good Mood App</h1>
-      ${TypeSwitch()}
-      ${JokeBlock(jokeContent, dataStore.jokesType)}
-      ${Button(dataStore.setupShown)}
-      ${Counter(dataStore.jokesShown)}
+  return (
+    <div className={style.app}>
+      <h1 className={style.appTitle}>Good Mood App</h1>
+      <TypeSwitch jokeType={dataStore.jokesType} />
+      <JokeBlock jokeText={jokeText} jokesType={dataStore.jokesType} />
+      <Button setup={dataStore.setupShown} />
+      <Counter jokesShown={dataStore.jokesShown} />
     </div>
-  `;
+  );
 }
 
 export default App;
