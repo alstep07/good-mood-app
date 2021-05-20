@@ -1,5 +1,6 @@
 import dataStore from '../data/dataStore';
 import renderApp from '../framework/render';
+import { getRandomJoke } from './jokeAPI';
 
 export async function setNewRandomJoke() {
   dataStore.isDataLoading = true;

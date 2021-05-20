@@ -7,7 +7,7 @@ import LoadIcon from '../LoadIcon/LoadIcon';
 
 export default function JokeBlock({ jokeText, jokesType }) {
   return (
-    <div className={`${style.jokeContainer} ${jokesType === 'programming' && style.programming}`}>
+    <div className={style.jokeContainer}>
       {dataStore.isDataLoading ? (
         <LoadIcon jokesType={jokesType} />
       ) : (

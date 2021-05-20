@@ -3,7 +3,12 @@
 import { createElement, createFragment } from '../framework/element';
 import style from './App.css';
 import dataStore from '../data/dataStore';
-import { setJokeContent } from '../data/jokesData';
+import {
+  setJokeContent,
+  setJokesType,
+  setJokePunchLine,
+  setNewRandomJoke,
+} from '../data/jokesData';
 import JokeBlock from './JokeBlock/JokeBlock';
 import Button from './Button/Button';
 import TypeSwitch from './TypeSwitch/TypeSwitch';
@@ -19,9 +24,12 @@ function App() {
       }`}
     >
       <h1 className={style.title}>Good Mood App</h1>
-      <TypeSwitch jokesType={dataStore.jokesType} />
+      <TypeSwitch jokesType={dataStore.jokesType} handleChange={setJokesType} />
       <JokeBlock jokeText={jokeText} jokesType={dataStore.jokesType} />
-      <Button setup={dataStore.setupShown} />
+      <Button
+        text={dataStore.setupShown ? 'Punchline' : 'New Joke'}
+        handleClick={dataStore.setupShown ? setJokePunchLine : setNewRandomJoke}
+      />
       <Counter jokesShown={dataStore.jokesShown} />
     </div>
   );
