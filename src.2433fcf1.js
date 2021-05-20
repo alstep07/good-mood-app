@@ -28,11 +28,15 @@ module.exports={loadIcon:"_loadIcon_74820"};
 module.exports={button:"_button_95069"};
 },{}],"uJGF":[function(require,module,exports) {
 "use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.default=r;var e=require("../../framework/element"),t=require("../../data/jokesData"),u=n(require("./Button.css"));function n(e){return e&&e.__esModule?e:{default:e}}function r({setup:n}){const r=n?t.setJokePunchLine:t.setNewRandomJoke,o=n?"Punchline":"New joke";return(0,e.createElement)("button",{className:u.default.button,onclick:()=>r()},o)}
-},{"../../framework/element":"PA9s","../../data/jokesData":"uAIe","./Button.css":"FsBU"}],"LwN8":[function(require,module,exports) {
-module.exports={fieldset:"_fieldset_3a8bd",title:"_title_3a8bd",label:"_label_3a8bd"};
+},{"../../framework/element":"PA9s","../../data/jokesData":"uAIe","./Button.css":"FsBU"}],"ihGd":[function(require,module,exports) {
+module.exports={label:"_label_d9abf"};
+},{}],"0n/N":[function(require,module,exports) {
+"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.default=a;var e=require("../../framework/element"),t=r(require("./RadioButton.css"));function r(e){return e&&e.__esModule?e:{default:e}}function a({name:r,type:a,category:n,handleChange:l,checked:c}){return(0,e.createElement)(e.createFragment,null,(0,e.createElement)("input",{id:n,type:a,name:r,onchange:e=>l(e.currentTarget.id),checked:c}),(0,e.createElement)("label",{className:t.default.label,For:n},n))}
+},{"../../framework/element":"PA9s","./RadioButton.css":"ihGd"}],"LwN8":[function(require,module,exports) {
+module.exports={fieldset:"_fieldset_3a8bd",title:"_title_3a8bd"};
 },{}],"YYLn":[function(require,module,exports) {
-"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.default=l;var e=require("../../framework/element"),t=require("../../data/jokesData"),a=r(require("./TypeSwitch.css"));function r(e){return e&&e.__esModule?e:{default:e}}function l({jokesType:r}){return(0,e.createElement)("fieldset",{className:a.default.fieldset},(0,e.createElement)("legend",{className:a.default.title},"Choose jokes category:"),(0,e.createElement)("div",null,["general","programming"].map(l=>(0,e.createElement)(e.createFragment,null,(0,e.createElement)("input",{id:l,type:"radio",name:"jokes-type",onchange:e=>(0,t.setJokesType)(e.currentTarget.id),checked:r===l}),(0,e.createElement)("label",{className:a.default.label,For:l},l)))))}
-},{"../../framework/element":"PA9s","../../data/jokesData":"uAIe","./TypeSwitch.css":"LwN8"}],"KfGH":[function(require,module,exports) {
+"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.default=o;var e=require("../../framework/element"),t=require("../../data/jokesData"),a=l(require("../RadioButton/RadioButton")),r=l(require("./TypeSwitch.css"));function l(e){return e&&e.__esModule?e:{default:e}}function o({jokesType:l}){return(0,e.createElement)("fieldset",{className:r.default.fieldset},(0,e.createElement)("legend",{className:r.default.title},"Choose jokes category:"),(0,e.createElement)("div",null,["general","programming"].map(r=>(0,e.createElement)(a.default,{type:"radio",category:r,name:"jokes-type",handleChange:t.setJokesType,checked:l===r}))))}
+},{"../../framework/element":"PA9s","../../data/jokesData":"uAIe","../RadioButton/RadioButton":"0n/N","./TypeSwitch.css":"LwN8"}],"KfGH":[function(require,module,exports) {
 module.exports={text:"_text_55342"};
 },{}],"r6Lj":[function(require,module,exports) {
 "use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.default=u;var e=require("../../framework/element"),r=t(require("./Counter.css"));function t(e){return e&&e.__esModule?e:{default:e}}function u({jokesShown:t}){return(0,e.createElement)("p",{className:r.default.text},"Already read jokes: ",t)}
@@ -43,4 +47,4 @@ module.exports={text:"_text_55342"};
 },{}],"Focm":[function(require,module,exports) {
 "use strict";var e=n(require("./data/dataStore")),o=n(require("./components/App")),t=n(require("./framework/render")),a=require("./data/jokesData"),d=n(require("./data/jokeAPI"));function n(e){return e&&e.__esModule?e:{default:e}}module.hot&&module.hot.accept(),window.dataStore=e.default,window.renderApp=t.default,window.setJokePunchLine=a.setJokePunchLine,window.setNewRandomJoke=a.setNewRandomJoke,window.changeJokesType=a.changeJokesType,window.getRandomJoke=d.default,(0,t.default)(o.default,document.getElementById("app-root"));
 },{"./data/dataStore":"hy1s","./components/App":"le+d","./framework/render":"iWoG","./data/jokesData":"uAIe","./data/jokeAPI":"6VP1"}]},{},["Focm"], null)
-//# sourceMappingURL=src.ea188966.js.map
+//# sourceMappingURL=src.2433fcf1.js.map
