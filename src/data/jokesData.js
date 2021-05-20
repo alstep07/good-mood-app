@@ -1,3 +1,6 @@
+import dataStore from '../data/dataStore';
+import renderApp from '../framework/render';
+
 export async function setNewRandomJoke() {
   dataStore.isDataLoading = true;
   let newJoke;
@@ -32,8 +35,9 @@ export function isNewJokeLoaded() {
   return dataStore.jokeText && dataStore.currentJoke.punchline !== dataStore.jokeText;
 }
 
-export function changeJokesType(inputValue) {
+export function setJokesType(inputValue) {
   dataStore.jokesType = inputValue;
+  renderApp();
 }
 
 export function setJokePunchLine() {

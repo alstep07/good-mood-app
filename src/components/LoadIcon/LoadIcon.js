@@ -1,8 +1,8 @@
 /** @jsx createElement */
 /** @jsxFrag createFragment */
-import { createElement, createFragment } from '../framework/element';
-import generalLoadIcon from '../assets/icons/load_general.gif';
-import progLoadIcon from '../assets/icons/load_prog.gif';
+import { createElement, createFragment } from '../../framework/element';
+import generalLoadIcon from './icons/load_general.gif';
+import progLoadIcon from './icons/load_prog.gif';
 import style from './LoadIcon.css';
 
 export default function LoadIcon({ jokesType }) {

@@ -1,7 +1,7 @@
 /** @jsx createElement */
 /** @jsxFrag createFragment */
-import { createElement, createFragment } from '../framework/element';
-import { setJokePunchLine, setNewRandomJoke } from '../data/jokesData';
+import { createElement, createFragment } from '../../framework/element';
+import { setJokePunchLine, setNewRandomJoke } from '../../data/jokesData';
 import style from './Button.css';
 
 export default function Button({ setup }) {

@@ -1,0 +1,14 @@
+.jokeContainer {
+  width: 35rem;
+  max-width: calc(100% - 3rem - 4px);
+  min-height: 8rem;
+  margin: 3rem auto 0;
+  padding: 0 1.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: var(--text-color-primary);
+  border: 2px solid var(--color-secondary);
+  box-shadow: 0 8px 6px -6px var(--shadow-color);
+}
