@@ -47,4 +47,4 @@ module.exports={text:"_text_55342"};
 },{"../framework/element":"PA9s","./App.css":"/0Na","../data/dataStore":"hy1s","../data/jokesData":"uAIe","./JokeBlock/JokeBlock":"vTtt","./Button/Button":"uJGF","./TypeSwitch/TypeSwitch":"YYLn","./Counter/Counter":"r6Lj"}],"Focm":[function(require,module,exports) {
 "use strict";var e=o(require("./data/dataStore")),t=o(require("./components/App")),r=o(require("./framework/render"));function o(e){return e&&e.__esModule?e:{default:e}}module.hot&&module.hot.accept(),window.dataStore=e.default,(0,r.default)(t.default,document.getElementById("app-root"));
 },{"./data/dataStore":"hy1s","./components/App":"le+d","./framework/render":"iWoG"}]},{},["Focm"], null)
-//# sourceMappingURL=src.6b5cce8f.js.map
+//# sourceMappingURL=src.cd1e8702.js.map
