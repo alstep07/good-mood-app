@@ -1,8 +1,7 @@
 /** @jsx createElement */
 /** @jsxFrag createFragment */
-import { createElement, createFragment } from '../framework/element';
+import { createElement, createFragment } from '../framework';
 import style from './App.css';
-import dataStore from '../data/dataStore';
 import {
   setJokeContent,
   setJokesType,
@@ -15,7 +14,8 @@ import TypeSwitch from './TypeSwitch/TypeSwitch';
 import Counter from './Counter/Counter';
 
 function App() {
-  const jokeText = setJokeContent(dataStore.jokeText);
+  const [jokeText, setJokeText] = useState('');
+  setJokeText(() => setJokeContent(jokeText));
 
   return (
     <div

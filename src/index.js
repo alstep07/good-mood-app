@@ -1,6 +1,5 @@
-import dataStore from './data/dataStore';
 import App from './components/App';
-import renderApp from './framework/render';
+import { render } from './framework';
 
 if (module.hot) {
   module.hot.accept();
@@ -8,4 +7,4 @@ if (module.hot) {
 
 window.dataStore = dataStore;
 
-renderApp(App, document.getElementById('app-root'));
+render(App, document.getElementById('app-root'));
