@@ -1,6 +1,6 @@
 /** @jsx createElement */
 /** @jsxFrag createFragment */
-import { createElement, createFragment } from '../../framework/element';
+import { createElement } from '../../framework/element';
 import style from './Button.css';
 
 export default function Button({ text, handleClick }) {

@@ -1,18 +1,14 @@
 /** @jsx createElement */
 /** @jsxFrag createFragment */
-import { createElement, createFragment } from '../../framework/element';
+import { createElement } from '../../framework';
 import JokeText from '../JokeText/JokeText';
 import style from './JokeBlock.css';
 import LoadIcon from '../LoadIcon/LoadIcon';
 
-export default function JokeBlock({ jokeText, jokesType }) {
+export default function JokeBlock({ jokeText, jokeType, dataLoading }) {
   return (
     <div className={style.jokeContainer}>
-      {dataStore.isDataLoading ? (
-        <LoadIcon jokesType={jokesType} />
-      ) : (
-        <JokeText jokeText={jokeText} />
-      )}
+      {dataLoading ? <LoadIcon jokesType={jokeType} /> : <JokeText jokeText={jokeText} />}
     </div>
   );
 }
