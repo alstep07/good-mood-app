@@ -8,8 +8,8 @@ export default function TypeSwitch({ handleSwitch, jokeType }) {
   const categories = ['general', 'programming'];
 
   return (
-    <fieldset className={style.fieldset}>
-      <legend className={style.title}>Choose jokes category:</legend>
+    <fieldset class={style.fieldset}>
+      <legend class={style.title}>Choose jokes category:</legend>
       <div>
         {categories.map(category => (
           <RadioButton

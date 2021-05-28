@@ -13,7 +13,7 @@ export default function RadioButton({ name, type, category, handleSwitch, checke
         onchange={e => handleSwitch(e.currentTarget.id)}
         checked={checked}
       />
-      <label className={style.label} For={category}>
+      <label class={style.label} For={category}>
         {category}
       </label>
     </>

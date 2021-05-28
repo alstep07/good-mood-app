@@ -12,7 +12,6 @@ function App() {
   const [content, setContent] = useState('Click the button to get a first joke!');
   const [jokesShown, setJokesShown] = useState(0);
   const [setupShown, setSetupShown] = useState(false);
-  const [shownIds, setShownIds] = useState([]);
   const [dataLoading, setDataLoading] = useState(false);
   const [joke, setJoke] = useState({});
   const [error, setError] = useState(null);
@@ -53,15 +52,13 @@ function App() {
         newContent = error;
       }
     }
-    setSetupShown(!setSetupShown);
+    setSetupShown(!setupShown);
     setContent(newContent);
   };
 
   return (
-    <div
-      className={`${style.app} ${jokeType === 'programming' ? style.themeDark : style.themeLight}`}
-    >
-      <h1 className={style.title}>Good Mood App</h1>
+    <div class={`${style.app} ${jokeType === 'programming' ? style.themeDark : style.themeLight}`}>
+      <h1 class={style.title}>Good Mood App</h1>
       <TypeSwitch jokeType={jokeType} handleSwitch={handleSwitch} />
       <JokeBlock jokeText={content} jokeType={jokeType} />
       <Button text={setupShown ? 'Punchline' : 'New Joke'} handleClick={handleButtonClick} />

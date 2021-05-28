@@ -7,7 +7,7 @@ import LoadIcon from '../LoadIcon/LoadIcon';
 
 export default function JokeBlock({ jokeText, jokeType, dataLoading }) {
   return (
-    <div className={style.jokeContainer}>
+    <div class={style.jokeContainer}>
       {dataLoading ? <LoadIcon jokesType={jokeType} /> : <JokeText jokeText={jokeText} />}
     </div>
   );
