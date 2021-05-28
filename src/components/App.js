@@ -9,7 +9,7 @@ import Counter from './Counter/Counter';
 
 function App() {
   const [jokeType, setJokeType] = useState('general');
-  const [content, setContent] = useState('Click the button to get a first joke!');
+  const [content, setContent] = useState('Click the button to get a joke!');
   const [jokesShown, setJokesShown] = useState(0);
   const [setupShown, setSetupShown] = useState(false);
   const [dataLoading, setDataLoading] = useState(false);
@@ -18,7 +18,7 @@ function App() {
   const [error, setError] = useState(null);
 
   const categories = ['general', 'programming'];
-  const themes = ['dark', 'light'];
+  const themes = ['light', 'dark'];
 
   const handleCategorySwitch = value => {
     setJokeType(value);
@@ -56,6 +56,7 @@ function App() {
         const [newJoke] = await getRandomJoke(jokeType);
         newContent = newJoke.setup;
         setJoke(newJoke);
+        setJokesShown(jokesShown => jokesShown + 1);
       } catch (error) {
         newContent = error;
       }
