@@ -4,20 +4,18 @@ import { createElement } from '../../framework';
 import RadioButton from '../RadioButton/RadioButton';
 import style from './TypeSwitch.css';
 
-export default function TypeSwitch({ handleSwitch, jokeType }) {
-  const categories = ['general', 'programming'];
-
+export default function TypeSwitch({ handleSwitch, types, legend, name, currentType }) {
   return (
     <fieldset class={style.fieldset}>
-      <legend class={style.title}>Choose jokes category:</legend>
-      <div>
-        {categories.map(category => (
+      <legend class={style.title}>{legend}</legend>
+      <div class={style.inputs}>
+        {types.map(type => (
           <RadioButton
             type="radio"
-            category={category}
-            name="jokes-type"
+            value={type}
+            name={name}
             handleSwitch={handleSwitch}
-            checked={jokeType === category}
+            checked={type === currentType}
           />
         ))}
       </div>

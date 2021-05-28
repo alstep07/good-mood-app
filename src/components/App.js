@@ -13,11 +13,19 @@ function App() {
   const [jokesShown, setJokesShown] = useState(0);
   const [setupShown, setSetupShown] = useState(false);
   const [dataLoading, setDataLoading] = useState(false);
+  const [theme, setTheme] = useState('light');
   const [joke, setJoke] = useState({});
   const [error, setError] = useState(null);
 
-  const handleSwitch = value => {
+  const categories = ['general', 'programming'];
+  const themes = ['dark', 'light'];
+
+  const handleCategorySwitch = value => {
     setJokeType(value);
+  };
+
+  const handleThemeSwitch = value => {
+    setTheme(value);
   };
 
   const handleButtonClick = () => {
@@ -57,9 +65,24 @@ function App() {
   };
 
   return (
-    <div class={`${style.app} ${jokeType === 'programming' ? style.themeDark : style.themeLight}`}>
+    <div class={`${style.app} ${theme === 'dark' ? style.themeDark : style.themeLight}`}>
       <h1 class={style.title}>Good Mood App</h1>
-      <TypeSwitch jokeType={jokeType} handleSwitch={handleSwitch} />
+      <div class={style.configBar}>
+        <TypeSwitch
+          legend="Jokes category:"
+          handleSwitch={handleCategorySwitch}
+          types={categories}
+          name="joke-type"
+          currentType={jokeType}
+        />
+        <TypeSwitch
+          legend="Theme:"
+          handleSwitch={handleThemeSwitch}
+          types={themes}
+          name="theme"
+          currentType={theme}
+        />
+      </div>
       <JokeBlock jokeText={content} jokeType={jokeType} />
       <Button text={setupShown ? 'Punchline' : 'New Joke'} handleClick={handleButtonClick} />
       <Counter jokesShown={jokesShown} />
