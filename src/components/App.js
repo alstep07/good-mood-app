@@ -2,6 +2,7 @@
 /** @jsxFrag createFragment */
 import { createElement, useState, useEffect } from '../framework';
 import style from './App.css';
+import Title from '../components/Title/Title';
 import JokeBlock from './JokeBlock/JokeBlock';
 import Button from './Button/Button';
 import TypeSwitch from './TypeSwitch/TypeSwitch';
@@ -29,7 +30,7 @@ function App() {
   };
 
   const handleButtonClick = () => {
-    updateContent(joke, setupShown, jokeType);
+    updateContent(joke, setupShown, jokeType, error);
   };
 
   const getRandomJoke = async jokeType => {
@@ -47,27 +48,26 @@ function App() {
     return `https://official-joke-api.appspot.com/jokes/${jokeType}/random`;
   };
 
-  const updateContent = async (joke, setup, jokeType) => {
+  const updateContent = async (joke, setup, jokeType, error) => {
     let newContent;
     if (setup) {
       newContent = joke.punchline;
+    } else if (error) {
+      newContent = error;
     } else {
-      try {
-        const [newJoke] = await getRandomJoke(jokeType);
-        newContent = newJoke.setup;
-        setJoke(newJoke);
-        setJokesShown(jokesShown => jokesShown + 1);
-      } catch (error) {
-        newContent = error;
-      }
+      const [newJoke] = await getRandomJoke(jokeType);
+      newContent = newJoke.setup;
+      setJoke(newJoke);
+      setJokesShown(jokesShown => jokesShown + 1);
     }
+
     setSetupShown(!setupShown);
     setContent(newContent);
   };
 
   return (
     <div class={`${style.app} ${theme === 'dark' ? style.themeDark : style.themeLight}`}>
-      <h1 class={style.title}>Good Mood App</h1>
+      <Title text="Good Mood" />
       <div class={style.configBar}>
         <TypeSwitch
           legend="Jokes category:"

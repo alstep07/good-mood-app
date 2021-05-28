@@ -3,6 +3,7 @@
   --color-primary: #ff765e;
   --color-secondary: #aaa;
   --button-color-hover: #ff6b51;
+  --button-color-active: #ec593e;
   --button-color-text: #fff;
   --text-color-primary: #333;
   --text-color-secondary: #777;
@@ -13,7 +14,8 @@
   --background-color: #333;
   --color-primary: #973997;
   --color-secondary: #e0dd0d;
-  --button-color-hover: #07aa07;
+  --button-color-hover: #812b81;
+  --button-color-active: #07aa07;
   --button-color-text: #fff;
   --text-color-primary: #00ffff;
   --text-color-secondary: #0ee90e;
@@ -28,12 +30,6 @@
   flex-direction: column;
   align-items: center;
   overflow: hidden;
-}
-
-.title {
-  margin-top: 3rem;
-  font-size: 2.75rem;
-  color: var(--text-color-primary);
 }
 
 .configBar {
