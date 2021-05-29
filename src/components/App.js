@@ -41,6 +41,8 @@ function App() {
       return result;
     } catch (error) {
       setError(error);
+    } finally {
+      setDataLoading(false);
     }
   };
 
@@ -55,6 +57,7 @@ function App() {
     } else if (error) {
       newContent = error;
     } else {
+      setDataLoading(true);
       const [newJoke] = await getRandomJoke(jokeType);
       newContent = newJoke.setup;
       setJoke(newJoke);
