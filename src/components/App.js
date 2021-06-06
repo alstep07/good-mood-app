@@ -1,6 +1,4 @@
-/** @jsx createElement */
-/** @jsxFrag createFragment */
-import { createElement, useState, useEffect } from '../framework';
+import React, { useState } from 'react';
 import style from './App.css';
 import Title from '../components/Title/Title';
 import JokeBlock from './JokeBlock/JokeBlock';
@@ -66,9 +64,9 @@ function App() {
   };
 
   return (
-    <div class={`${style.app} ${theme === 'dark' ? style.themeDark : style.themeLight}`}>
+    <div className={`${style.app} ${theme === 'dark' ? style.themeDark : style.themeLight}`}>
       <Title text="Good Mood" />
-      <div class={style.configBar}>
+      <div className={style.configBar}>
         <TypeSwitch
           legend="Jokes category:"
           handleSwitch={handleCategorySwitch}

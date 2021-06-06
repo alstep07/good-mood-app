@@ -1,6 +1,4 @@
-/** @jsx createElement */
-/** @jsxFrag createFragment */
-import { createElement, createFragment } from '../../framework/element';
+import React from 'react';
 import generalLoadIcon from './icons/load_general.gif';
 import progLoadIcon from './icons/load_prog.gif';
 import style from './LoadIcon.css';

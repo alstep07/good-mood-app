@@ -1,8 +1,9 @@
+import React from 'react';
 import App from './components/App';
-import { render } from './framework';
+import { render } from 'react-dom';
 
 if (module.hot) {
   module.hot.accept();
 }
 
-render(App, document.getElementById('app-root'));
+render(<App />, document.getElementById('app-root'));
