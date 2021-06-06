@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { getRandomJoke } from '../data/jokeAPI';
+import { categories, themes } from '../data';
 import style from './App.css';
 import Title from '../components/Title/Title';
 import JokeBlock from './JokeBlock/JokeBlock';
@@ -16,9 +18,6 @@ function App() {
   const [joke, setJoke] = useState({});
   const [error, setError] = useState(null);
 
-  const categories = ['general', 'programming'];
-  const themes = ['light', 'dark'];
-
   const handleCategorySwitch = value => {
     setJokeType(value);
   };
@@ -31,24 +30,6 @@ function App() {
     updateContent(joke, setupShown, jokeType, error);
   };
 
-  const getRandomJoke = async jokeType => {
-    const url = getRandomJokeUrl(jokeType);
-    try {
-      setDataLoading(true);
-      const response = await fetch(url);
-      const result = await response.json();
-      return result;
-    } catch (error) {
-      setError(error);
-    } finally {
-      setDataLoading(false);
-    }
-  };
-
-  const getRandomJokeUrl = (jokeType = 'general') => {
-    return `https://official-joke-api.appspot.com/jokes/${jokeType}/random`;
-  };
-
   const updateContent = async (joke, setup, jokeType, error) => {
     let newContent;
     if (setup) {
@@ -56,10 +37,17 @@ function App() {
     } else if (error) {
       newContent = error;
     } else {
-      const [newJoke] = await getRandomJoke(jokeType);
-      newContent = newJoke.setup;
-      setJoke(newJoke);
-      setJokesShown(jokesShown => jokesShown + 1);
+      try {
+        setDataLoading(true);
+        const [newJoke] = await getRandomJoke(jokeType);
+        newContent = newJoke.setup;
+        setJoke(newJoke);
+        setJokesShown(jokesShown => jokesShown + 1);
+      } catch (error) {
+        setError(error);
+      } finally {
+        setDataLoading(false);
+      }
     }
     setSetupShown(!setupShown);
     setContent(newContent);
@@ -67,7 +55,7 @@ function App() {
 
   return (
     <div className={`${style.app} ${theme === 'dark' ? style.themeDark : style.themeLight}`}>
-      <Title text="Good Mood" />
+      <Title text="Joker" />
       <div className={style.configBar}>
         <TypeSwitch
           legend="Jokes category:"
