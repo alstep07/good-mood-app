@@ -1,6 +1,5 @@
 .jokeContainer {
   width: 100%;
-  max-width: calc(100% - 3rem - 4px);
   min-height: 8rem;
   margin: 3rem auto 0;
   padding: 0 1.5rem;
@@ -16,7 +15,8 @@
 
 @media (min-width: 640px) {
   .jokeContainer {
-    width: 35rem;
+    width: 40rem;
+    max-width: 85%;
     border-right: 1px solid var(--color-secondary);
     border-left: 1px solid var(--color-secondary);
   }
