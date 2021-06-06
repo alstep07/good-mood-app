@@ -42,7 +42,6 @@ function App() {
     } catch (error) {
       setError(error);
     } finally {
-      setDataLoading(false);
     }
   };
 
@@ -57,13 +56,11 @@ function App() {
     } else if (error) {
       newContent = error;
     } else {
-      setDataLoading(true);
       const [newJoke] = await getRandomJoke(jokeType);
       newContent = newJoke.setup;
       setJoke(newJoke);
       setJokesShown(jokesShown => jokesShown + 1);
     }
-
     setSetupShown(!setupShown);
     setContent(newContent);
   };
@@ -87,7 +84,7 @@ function App() {
           currentType={theme}
         />
       </div>
-      <JokeBlock jokeText={content} jokeType={jokeType} />
+      <JokeBlock dataLoading={dataLoading} jokeText={content} jokeType={jokeType} />
       <Button text={setupShown ? 'Punchline' : 'New Joke'} handleClick={handleButtonClick} />
       <Counter jokesShown={jokesShown} />
     </div>

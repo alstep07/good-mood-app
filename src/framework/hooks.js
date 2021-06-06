@@ -10,7 +10,6 @@ export function createFunctionElement(tag, props, children) {
   current.wipComponent = tag;
   current.hookIndex = 0;
   current.wipComponent.hooks = current.wipComponent.hooks || [];
-
   return tag({ ...props, children }, children);
 }
 
@@ -23,7 +22,6 @@ export function useState(initial) {
   };
 
   const actions = oldHook ? oldHook.queue : [];
-
   actions.forEach(action => {
     hook.state = isFunction(action) ? action(hook.state) : action;
   });
@@ -55,9 +53,7 @@ export function useEffect(effect, deps) {
     unmount: effect(),
     deps,
   };
-
   window.addEventListener('beforeunload', wipComponent.hooks[hookIndex].unmount);
-
   current.hookIndex++;
 }
 
