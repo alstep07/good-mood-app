@@ -1,14 +1,14 @@
 import React from 'react';
-import generalLoadIcon from './icons/load_general.gif';
-import progLoadIcon from './icons/load_prog.gif';
+import lightLoadIcon from './icons/load_general.gif';
+import darkLoadIcon from './icons/load_prog.gif';
 import style from './LoadIcon.css';
 
-export default function LoadIcon({ jokesType }) {
+export default function LoadIcon({ theme }) {
   return (
     <>
       <img
         className={style.loadIcon}
-        src={jokesType === 'programming' ? progLoadIcon : generalLoadIcon}
+        src={theme === 'dark' ? darkLoadIcon : lightLoadIcon}
         alt="loading"
       />
     </>

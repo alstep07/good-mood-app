@@ -3,10 +3,10 @@ import JokeText from '../JokeText/JokeText';
 import style from './JokeBlock.css';
 import LoadIcon from '../LoadIcon/LoadIcon';
 
-export default function JokeBlock({ jokeText, jokeType, dataLoading }) {
+export default function JokeBlock({ jokeText, theme, dataLoading }) {
   return (
     <div className={style.jokeContainer}>
-      {dataLoading ? <LoadIcon jokesType={jokeType} /> : <JokeText jokeText={jokeText} />}
+      {dataLoading ? <LoadIcon theme={theme} /> : <JokeText jokeText={jokeText} />}
     </div>
   );
 }

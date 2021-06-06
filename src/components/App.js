@@ -34,12 +34,14 @@ function App() {
   const getRandomJoke = async jokeType => {
     const url = getRandomJokeUrl(jokeType);
     try {
+      setDataLoading(true);
       const response = await fetch(url);
       const result = await response.json();
       return result;
     } catch (error) {
       setError(error);
     } finally {
+      setDataLoading(false);
     }
   };
 
@@ -82,7 +84,7 @@ function App() {
           currentType={theme}
         />
       </div>
-      <JokeBlock dataLoading={dataLoading} jokeText={content} jokeType={jokeType} />
+      <JokeBlock dataLoading={dataLoading} jokeText={content} theme={theme} />
       <Button text={setupShown ? 'Punchline' : 'New Joke'} handleClick={handleButtonClick} />
       <Counter jokesShown={jokesShown} />
     </div>
