@@ -1,5 +1,5 @@
 .jokeContainer {
-  width: 100%;
+  width: calc(100% - 3rem);
   min-height: 8rem;
   margin: 3rem auto 0;
   padding: 0 1.5rem;

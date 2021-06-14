@@ -14,9 +14,10 @@ function App() {
   const [jokesShown, setJokesShown] = useState(0);
   const [setupShown, setSetupShown] = useState(false);
   const [dataLoading, setDataLoading] = useState(false);
-  const [theme, setTheme] = useState('light');
+  const [theme, setTheme] = useState('themeLight');
   const [joke, setJoke] = useState({});
-  const [error, setError] = useState(null);
+
+  const buttonText = setupShown ? 'Punchline' : 'New Joke';
 
   const handleCategorySwitch = value => {
     setJokeType(value);
@@ -27,34 +28,26 @@ function App() {
   };
 
   const handleButtonClick = () => {
-    updateContent(joke, setupShown, jokeType, error);
+    setupShown ? setContent(joke.punchline) : updateContent();
+    setSetupShown(!setupShown);
   };
 
-  const updateContent = async (joke, setup, jokeType, error) => {
-    let newContent;
-    if (setup) {
-      newContent = joke.punchline;
-    } else if (error) {
-      newContent = error;
-    } else {
-      try {
-        setDataLoading(true);
-        const [newJoke] = await getRandomJoke(jokeType);
-        newContent = newJoke.setup;
-        setJoke(newJoke);
-        setJokesShown(jokesShown => jokesShown + 1);
-      } catch (error) {
-        setError(error);
-      } finally {
-        setDataLoading(false);
-      }
+  const updateContent = async () => {
+    try {
+      setDataLoading(true);
+      const [newJoke] = await getRandomJoke(jokeType);
+      setContent(newJoke.setup);
+      setJoke(newJoke);
+      setJokesShown(jokesShown => jokesShown + 1);
+    } catch (error) {
+      console.error(error.message);
+    } finally {
+      setDataLoading(false);
     }
-    setSetupShown(!setupShown);
-    setContent(newContent);
   };
 
   return (
-    <div className={`${style.app} ${theme === 'dark' ? style.themeDark : style.themeLight}`}>
+    <div className={`${style.app} ${style[theme]}`}>
       <Title text="Joker" />
       <div className={style.configBar}>
         <TypeSwitch
@@ -73,7 +66,7 @@ function App() {
         />
       </div>
       <JokeBlock dataLoading={dataLoading} jokeText={content} theme={theme} />
-      <Button text={setupShown ? 'Punchline' : 'New Joke'} handleClick={handleButtonClick} />
+      <Button text={buttonText} handleClick={handleButtonClick} />
       <Counter jokesShown={jokesShown} />
     </div>
   );

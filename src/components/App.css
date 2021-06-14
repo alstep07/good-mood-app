@@ -1,4 +1,4 @@
-.themeLight {
+.light {
   --background-color: #fff;
   --color-primary: #ff765e;
   --color-secondary: #aaa;
@@ -10,7 +10,7 @@
   --shadow-color: #e5e5e5;
 }
 
-.themeDark {
+.dark {
   --background-color: #333;
   --color-primary: #b343b3;
   --color-secondary: #e0dd0d;
