@@ -14,7 +14,7 @@ function App() {
   const [jokesShown, setJokesShown] = useState(0);
   const [setupShown, setSetupShown] = useState(false);
   const [dataLoading, setDataLoading] = useState(false);
-  const [theme, setTheme] = useState('themeLight');
+  const [theme, setTheme] = useState('light');
   const [joke, setJoke] = useState({});
 
   const buttonText = setupShown ? 'Punchline' : 'New Joke';
